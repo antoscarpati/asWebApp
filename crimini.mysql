@@ -1,0 +1,43 @@
+CREATE SCHEMA `crimini` ;
+CREATE  TABLE `crimini`.`utenti` (
+  `username` VARCHAR(8) NOT NULL ,
+  `password` VARCHAR(8) NULL ,
+  `nome` VARCHAR(45) NULL ,
+  `cognome` VARCHAR(45) NULL ,
+  `id_ruolo` INT NULL ,
+  PRIMARY KEY (`username`) );
+   ADD CONSTRAINT `fk_utenti_ruoli`
+  FOREIGN KEY (`id_ruolo` )
+  REFERENCES `crimini`.`ruoli` (`id_ruolo` )
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
+, ADD INDEX `fk_utenti_ruoli_idx` (`id_ruolo` ASC) ;
+CREATE  TABLE `crimini`.`ruoli` (
+  `id_ruolo` INT NOT NULL ,
+  `descrizione` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id_ruoli`) );
+CREATE  TABLE `crimini`.`persone` (
+  `cod_fiscale` VARCHAR(16) NOT NULL ,
+  `nome` VARCHAR(45) NULL ,
+  `cognome` VARCHAR(45) NULL ,
+  `citta` VARCHAR(45) NULL ,
+  PRIMARY KEY (`cod_fiscale`) );
+  CREATE  TABLE `crimini`.`reati` (
+  `id_reato` INT NOT NULL ,
+  `descrizione` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id_reato`) );
+CREATE  TABLE `crimini`.`persone_reati` (
+  `cod_fiscale` VARCHAR(16) NOT NULL ,
+  `id_reato` INT NULL ,
+  PRIMARY KEY (`cod_fiscale`) ,
+  INDEX `fk_reati_idx` (`id_reato` ASC) ,
+  CONSTRAINT `fk_persone`
+    FOREIGN KEY (`cod_fiscale` )
+    REFERENCES `crimini`.`persone` (`cod_fiscale` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_reati`
+    FOREIGN KEY (`id_reato` )
+    REFERENCES `crimini`.`reati` (`id_reato` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
