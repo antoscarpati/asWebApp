@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Login Page</title>
+		
+		<script type="text/javascript">
+		function controllaLunghezzaUsername() {
+			var userVal = document.LoginForm.username.value;
+			if(userVal.length<3){
+				alert("il campo deve essere almeno di 3 caratteri!!!");
+				return false;
+			}
+			document.LoginForm.submit();
+		}
+	
+		</script>
+		
+	</head>
+	<body>
+		Effettuare la login: <br/>
+			<form name="LoginForm" method="POST" action="home">
+			username&nbsp;<input type="text" name="username" value="" />
+			password&nbsp;<input type="password" name="password" />
+			<input type="button" name="LoginButton" value="Invio" onclick="controllaLunghezzaUsername();"/>
+			</form>
+	</body>
+</html>
