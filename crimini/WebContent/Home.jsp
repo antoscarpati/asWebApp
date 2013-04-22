@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import ="it.geek.crimini.model.Utente" %>
 
-<%Utente ut=(Utente)request.getAttribute("utente"); %>
+<%Utente ut=(Utente)session.getAttribute("utente"); %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -12,9 +12,14 @@
 <body>
 Benvenuto&nbsp;carissimo&nbsp;<%=ut.getNome() %>&nbsp;<%=ut.getCognome()%> 
 
-	<form name="homeForm" action="listaCaseDiscografiche">
-		<input type="submit" name="vai" value="Vai alla lista delle case discografiche"/>	
+	<form name="LogoutForm" method="POST" action="logout">
+		<input type="submit" name="Logout" value="logout"/>	
 	</form>
-
+	
+    <% if (ut.isAmministratore()) { %>
+	<form name="homeForm" method="GET" action="visualizzaUtenti">
+		<input type="submit" name="vai" value="vai alla gestione utenze"/>	
+	</form>
+	<%} %>
 </body>
 </html>

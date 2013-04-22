@@ -1,6 +1,6 @@
 package it.geek.crimini.model;
 
-public class Persone {
+public class Persona {
 
 	private String cod_fiscale;
 	private String nome;

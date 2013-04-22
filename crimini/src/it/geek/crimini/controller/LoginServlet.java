@@ -29,19 +29,24 @@ package it.geek.crimini.controller;
 			
 			String forwardPath="";
 			
-			if (u!=null && u.getPassword().equals(password)){
+			if (u== null){
+				forwardPath="/error.jsp";
+				request.setAttribute ("errore", "hai sbagliato utente");
+			}
+			
+			else if (u!=null && u.getPassword().equals(password)){
 							
-				forwardPath="/Home.jsp";
-				request.setAttribute("utente", u);
+				forwardPath="/home.jsp";
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("utente", u);
 				
-				} else {
+			} else {
 					
 				forwardPath="/error.jsp";
-					
-				}
+				request.setAttribute("errore", "hai sbagliato password!");	
+			}
+			
 			RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
 			rd.forward(request, response);
 			}

@@ -1,14 +1,14 @@
 package it.geek.crimini.model;
 
-public class Ruoli {
+public class Reato {
 
-	private int id_ruolo;
+	private int id_reato;
 	private String descrizione;
-	public int getId_ruolo() {
-		return id_ruolo;
+	public int getId_reato() {
+		return id_reato;
 	}
-	public void setId_ruolo(int id_ruolo) {
-		this.id_ruolo = id_ruolo;
+	public void setId_reato(int id_reato) {
+		this.id_reato = id_reato;
 	}
 	public String getDescrizione() {
 		return descrizione;

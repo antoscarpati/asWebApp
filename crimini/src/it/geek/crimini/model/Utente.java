@@ -38,6 +38,9 @@ public class Utente {
 		this.id_ruolo = id_ruolo;
 	}
 	
-	
+	public boolean isAmministratore () {
+		return this.id_ruolo== 1;
+				
+	}
 	
 }
