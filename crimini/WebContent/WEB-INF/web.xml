@@ -16,11 +16,21 @@
  </servlet>
  
  <servlet>
- <servlet-name>VisualizzaUtenti</servlet-name>
- <servlet-class>it.geek.crimini.controller.VisualizzaUtentiServlet</servlet-class>
+ 	<servlet-name>VisualizzaUtenti</servlet-name>
+ 	<servlet-class>it.geek.crimini.controller.VisualizzaUtentiServlet</servlet-class>
  </servlet>
  
- <servlet-mapping>
+ <servlet>
+ 	<servlet-name>inserisciUtente</servlet-name>
+ 	<servlet-class>it.geek.crimini.controller.InserisciUtenteServlet</servlet-class>
+ </servlet>
+ 
+ <servlet>
+ 	<servlet-name>AggiuntoUtente</servlet-name>
+ 	<servlet-class>it.geek.crimini.controller.AggiuntoUtenteServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
 	<servlet-name>Login</servlet-name>
 	<url-pattern>/home</url-pattern>
 </servlet-mapping>
@@ -31,8 +41,17 @@
 </servlet-mapping>
 
 <servlet-mapping>
-<servlet-name>VisualizzaUtenti</servlet-name>
-<url-pattern>/visualizzaUtenti</url-pattern>
+	<servlet-name>VisualizzaUtenti</servlet-name>
+	<url-pattern>/visualizzaUtenti</url-pattern>
 </servlet-mapping>
 
+<servlet-mapping>
+	<servlet-name>inserisciUtente</servlet-name>
+	<url-pattern>/inserisciUtente</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>AggiuntoUtente</servlet-name>
+	<url-pattern>/aggiuntoUtente</url-pattern>
+</servlet-mapping>
 </web-app>

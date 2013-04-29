@@ -116,5 +116,49 @@ import java.util.Vector;
 			} 
 		return lista;	
 	}
+		public boolean insert (Utente u) {
+			
+		Connection c = null;
+		PreparedStatement ps = null;
+		boolean ret = false;
+		
+		c = ConnessioneDBCrimini.getConnection();
+		
+		String sql = "INSERT INTO utenti (username, password, nome, cognome, id_ruolo) values (?,?,?,?,?)";
+		
+		try{
+			ps=c.prepareStatement(sql);
+			ps.setString(1,u.getUsername());
+			ps.setString(2,u.getPassword());
+			ps.setString(3,u.getNome());
+			ps.setString(3,u.getCognome());
+			ps.setInt(5,u.getId_ruolo());
+			
+int ritorno = ps.executeUpdate ();
+			
+			if (ritorno>0) {
+				ret = true;
+        	}	
+		
+			
+			} catch (Exception e) {
+			e.printStackTrace ();
+			}
+			finally {
+				try {
+					ps.close();
+					}
+				catch (Exception e) {
+					System.out.println ("Impossibile chiudere il PreparedStatement"+ e);
+					e.printStackTrace ();
+					}
+				try {
+					c.close();
+					} catch (Exception e) {
+					System.out.println ("Impossibile chiudere la connection"+ e);
+					e.printStackTrace ();
+					}
+		} return ret;
+	}
 }
 	
